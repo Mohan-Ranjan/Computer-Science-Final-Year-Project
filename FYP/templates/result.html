@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick-Supermarket-Navigator - Result</title>
+    <title>Smart Supermarket Navigation - Result</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Adobe+Caslon+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light header-image result-header">
-        <div class="navbar-title-box">
-            <a class="navbar-brand" href="/" style="font-family: 'Adobe Caslon Pro', serif; font-size: 3em; font-weight: bold; text-align: center; width: 100%;">Quick-Supermarket-Navigator</a>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Smart Supermarket Navigation</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+            </ul>
         </div>
     </nav>
     <div class="container text-center">
-        <h1 class="my-4" style="font-family: 'Amatic SC', cursive;">Shortest Path</h1>
+        <h1 class="my-4">Shortest Path</h1>
+        <img src="{{ url_for('static', filename='nonc230100113.jpg') }}" alt="Path Map" class="img-fluid mb-4" width="200">
         <div>
             <h2>Items to buy:</h2>
             <ul class="list-group mb-4">
@@ -28,11 +31,7 @@
         </div>
         <div>
             <h2>Shortest Path Visualization:</h2>
-            <div id="path-visualization" class="mb-4"></div>
-            <script>
-                var plotData = {{ plot_json|safe }};
-                Plotly.newPlot('path-visualization', plotData.data, plotData.layout);
-            </script>
+            <img src="data:image/png;base64,{{ plot_url }}" class="img-fluid mb-4">
         </div>
         <div>
             <h2>Shortest Path:</h2>
